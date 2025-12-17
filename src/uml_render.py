@@ -1,4 +1,3 @@
-import requests
 
 from plantuml import PlantUML
 

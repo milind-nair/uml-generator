@@ -1,4 +1,4 @@
-from config import Config
+from src.config import Config
 
 class LLMProvider:
     def __init__(self):

@@ -1,5 +1,5 @@
-from llm_provider import LLMProvider
-from uml_render import render_plantuml
+from src.llm_provider import LLMProvider
+from src.uml_render import render_plantuml
 
 def main():
     print("Enter your description for the UML diagram:")
