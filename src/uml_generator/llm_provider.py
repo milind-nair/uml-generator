@@ -16,9 +16,15 @@ class LLMProvider:
 
     def _get_llm(self):
         if self.model_name.startswith('openai'):
-            return ChatOpenAI(model=self.model_name, temperature=0)
+            api_key = Config.get_openai_api_key()
+            if not api_key:
+                raise ValueError("OPENAI_API_KEY not found in environment variables.")
+            return ChatOpenAI(model=self.model_name, api_key=api_key, temperature=0)
         elif self.model_name == 'gemini-pro':
-            return ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True, temperature=0)
+            api_key = Config.get_gemini_api_key()
+            if not api_key:
+                raise ValueError("GEMINI_API_KEY not found in environment variables.")
+            return ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=api_key, convert_system_message_to_human=True, temperature=0)
         else:
             raise NotImplementedError(f"Model {self.model_name} not supported.")
 
