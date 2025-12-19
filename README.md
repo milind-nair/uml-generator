@@ -8,27 +8,22 @@ A Python-based AI agent that converts natural language descriptions into UML dia
 - Converts human input to PlantUML code
 - Renders PlantUML code to PNG image
 
-## Setup
+## Installation
 
-1. Clone the repository and navigate to the project directory.
-2. (Optional) Create and activate a virtual environment:
-   ```sh
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-   ```
-3. Install the package:
-   ```sh
-   pip install .
-   ```
-4. Set up your API keys in a `.env` file (this file is not tracked by git):
-   ```env
-   # Set the model to 'gemini-pro' or an OpenAI model like 'gpt-4'
-   UML_AGENT_MODEL=gemini-pro
+1.  Install the package from PyPI:
+    ```sh
+    pip install uml-generator
+    ```
 
-   # Add your API keys
-   GEMINI_API_KEY=your_gemini_api_key
-   OPENAI_API_KEY=your_openai_api_key
-   ```
+2.  Set up your API keys in a `.env` file in your project directory:
+    ```env
+    # Set the model to 'gemini-pro' or an OpenAI model like 'gpt-4'
+    UML_AGENT_MODEL=gemini-pro
+
+    # Add your API keys
+    GEMINI_API_KEY=your_gemini_api_key
+    OPENAI_API_KEY=your_openai_api_key
+    ```
 
 ## CLI Usage
 
@@ -63,6 +58,32 @@ prompt2 = "An activity diagram for making coffee"
 plantuml_code_only = uml_generator.generate(prompt2)
 print(plantuml_code_only)
 ```
+
+## Developer Setup
+
+If you want to contribute to the project, follow these steps:
+
+1.  Clone the repository:
+    ```sh
+    git clone https://github.com/milind-nair/uml-generator.git
+    cd uml-generator
+    ```
+
+2.  Create and activate a virtual environment:
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+3.  Install the package in editable mode:
+    ```sh
+    pip install -e .
+    ```
+
+4.  Run the tests:
+    ```sh
+    python -m unittest discover -s tests
+    ```
 
 ## Configuration
 
