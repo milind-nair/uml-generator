@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "uml-generator"
 version = "0.1.0"
 authors = [
-  { name="Milind Nair", email="nairmilind3@ga.com" },
+  { name="Milind Nair", email="nairmilind3@gmail.com" },
 ]
 description = "A LangChain-based AI agent that converts natural language to UML diagrams (PlantUML)"
 readme = "README.md"
