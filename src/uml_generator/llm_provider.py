@@ -1,7 +1,8 @@
+import os
 from .config import Config
 from langchain_openai import ChatOpenAI
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.schema import HumanMessage, SystemMessage
+from langchain.messages import HumanMessage, SystemMessage
 
 class LLMProvider:
     def __init__(self):
@@ -17,6 +18,9 @@ class LLMProvider:
             raise NotImplementedError(f"Model {self.model_name} not supported.")
 
     def generate_plantuml(self, prompt: str) -> str:
+        if os.getenv("UML_GENERATOR_MODE") == "test":
+            return "@startuml\nclass Car\n@enduml"
+
         system_prompt = (
             "You are an expert UML generator. "
             "Convert the following user request into PlantUML code. "
