@@ -8,51 +8,66 @@ A Python-based AI agent that converts natural language descriptions into UML dia
 - Converts human input to PlantUML code
 - Renders PlantUML code to PNG image
 
-## Project Structure
-
-```
-.
-├── src/
-│   ├── config.py
-│   ├── llm_provider.py
-│   ├── uml_render.py
-│   └── main.py
-├── requirements.txt
-├── .env (optional, for API keys)
-└── README.md
-```
-
 ## Setup
 
 1. Clone the repository and navigate to the project directory.
-2. (Optional) Create a virtual environment:
+2. (Optional) Create and activate a virtual environment:
    ```sh
-   python -m venv .venv
-   .venv\Scripts\activate  # Windows
+   python -m venv venv
+   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
    ```
-3. Install dependencies:
+3. Install the package:
    ```sh
-   pip install -r requirements.txt
+   pip install .
    ```
-4. Set up your API keys in a `.env` file:
+4. Set up your API keys in a `.env` file (this file is not tracked by git):
    ```env
+   # Set the model to 'gemini-pro' or an OpenAI model like 'gpt-4'
    UML_AGENT_MODEL=gemini-pro
+
+   # Add your API keys
    GEMINI_API_KEY=your_gemini_api_key
    OPENAI_API_KEY=your_openai_api_key
    ```
 
-## Usage
+## CLI Usage
 
-Run the main script and follow the prompt:
+Run the `uml-generator` command with your prompt.
 
+To print the PlantUML code to the console:
 ```sh
-python src/main.py
+uml-generator "A simple class diagram for a Dog"
+```
+
+To save the generated diagram to a file:
+```sh
+uml-generator "A simple class diagram for a Dog" -o dog_diagram.png
+```
+
+## Library Usage
+
+You can also use `uml-generator` as a library in your own Python code:
+
+```python
+import uml_generator
+
+# Generate PlantUML code and save the diagram to a file
+prompt = "A class diagram for a simple shopping cart"
+plantuml_code = uml_generator.generate(prompt, "shopping_cart.png")
+
+print("--- Generated PlantUML Code ---")
+print(plantuml_code)
+
+# Or, generate the code without saving a file
+prompt2 = "An activity diagram for making coffee"
+plantuml_code_only = uml_generator.generate(prompt2)
+print(plantuml_code_only)
 ```
 
 ## Configuration
 
-- Change the model by editing `UML_AGENT_MODEL` in `.env` or `config.py`.
-- Supported models: `gemini-pro`, `openai-gpt-4`, etc.
+- Change the model by editing `UML_AGENT_MODEL` in your `.env` file.
+- Supported models: `gemini-pro`, `openai/gpt-4`, etc.
 
 ## License
 
