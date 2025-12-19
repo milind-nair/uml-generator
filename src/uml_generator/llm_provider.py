@@ -6,6 +6,11 @@ from langchain.messages import HumanMessage, SystemMessage
 
 class LLMProvider:
     def __init__(self):
+        if os.getenv("UML_GENERATOR_MODE") == "test":
+            self.llm = None
+            self.model_name = "test"
+            return
+
         self.model_name = Config.get_model()
         self.llm = self._get_llm()
 
