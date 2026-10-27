@@ -12,7 +12,7 @@ A Python-based AI agent that converts natural language descriptions into UML dia
 
 1.  Install the package from PyPI:
     ```sh
-    pip install uml-generator
+    pip install python-uml-generator
     ```
 
 2.  Set up your API keys in a `.env` file in your project directory:
